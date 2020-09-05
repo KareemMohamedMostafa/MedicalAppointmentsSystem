@@ -16,7 +16,7 @@
 
       <div class="col-lg-5 col-md-6 col-sm-12">
 
-        <button class="btn btn-primary btn-icon btn-round hidden-sm-down float-right m-l-10" type="button" data-toggle="modal" data-target="#formModal" onclick="resetForm('patientForm')"> <i class="zmdi zmdi-plus"></i> </button>
+        <button class="btn btn-primary btn-icon btn-round hidden-sm-down float-right m-l-10" type="button" data-toggle="modal" data-target="#formPacientModal" onclick="resetForm('patientForm')"> <i class="zmdi zmdi-plus"></i> </button>
 
         <ul class="breadcrumb float-md-right">
 
@@ -24,7 +24,7 @@
 
           <li class="breadcrumb-item"><a href="javascript:void(0);">Patients</a></li>
 
-          <li class="breadcrumb-item active">All Patients</li>
+          <li class="breadcrumb-item active">All</li>
 
         </ul>
 
@@ -98,7 +98,7 @@
 
                       <button type="button" class="btn btn-default btn-icon btn-simple btn-icon-mini btn-round" data-toggle="modal" data-target="#viewModal" onclick="viewPatientModal('{{ $result->id }}')"><i class="zmdi zmdi-account-o"></i></button>
 
-                      <button type="button" class="btn btn-default btn-icon btn-simple btn-icon-mini btn-round" data-toggle="modal" data-target="#formModal" onclick="editPatientModal('{{ $result->id }}')"><i class="zmdi zmdi-edit"></i></button>
+                      <button type="button" class="btn btn-default btn-icon btn-simple btn-icon-mini btn-round" data-toggle="modal" data-target="#formPacientModal" onclick="editPatientModal('{{ $result->id }}')"><i class="zmdi zmdi-edit"></i></button>
 
                     </td>
 

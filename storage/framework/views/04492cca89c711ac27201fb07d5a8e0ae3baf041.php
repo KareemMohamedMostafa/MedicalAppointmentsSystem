@@ -4,9 +4,10 @@
 
     <div class="modal-content">
 
-      <form id="patientForm" action="{{ route('savepatient') }}" method="post" enctype="multipart/form-data">
+      <form id="patientForm" action="<?php echo e(route('savepatient')); ?>" method="post" enctype="multipart/form-data">
 
-        {!! csrf_field() !!}
+        <?php echo csrf_field(); ?>
+
 
         <div class="container-fluid">
 
@@ -100,11 +101,11 @@
 
                       <select class="form-control show-tick" id="doctorid" name="doctorid" required>
 
-                        @if(count($doctors)>0)
+                        <?php if(count($doctors)>0): ?>
 
-                        @foreach($doctors as $doc) <option value="{{ $doc->id }}">{{ $doc->fullname }}</option> @endforeach
+                        <?php foreach($doctors as $doc): ?> <option value="<?php echo e($doc->id); ?>"><?php echo e($doc->fullname); ?></option> <?php endforeach; ?>
 
-                        @else <option value="">No data</option> @endif
+                        <?php else: ?> <option value="">No data</option> <?php endif; ?>
 
                       </select>
 

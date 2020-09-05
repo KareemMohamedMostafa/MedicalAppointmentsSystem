@@ -43,7 +43,6 @@ class PatientController extends Controller
             $data['formatedphone'] = \FormatTime::phoneFormat($patient->phone);
             $data['formatedcreated_at'] = \FormatTime::LongTimeFilter($patient->created_at);
             $data['formatedupdated_at'] = \FormatTime::LongTimeFilter($patient->updated_at);
-            $data['formatedstatus'] = ucfirst($patient->status);
             $data['image'] = url('/getImage/' . $patient->image);
             $data['username'] = $patient->user->name;
             $data['usermodifiedname'] = $patient->usermodified->name;

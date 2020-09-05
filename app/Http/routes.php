@@ -25,22 +25,14 @@ Route::post('/saveappointment', array('as' => 'saveappointment', 'middleware' =>
 Route::get('/viewappointment', array('as' => 'viewappointment', 'middleware' => 'auth', 'uses' => 'AppointmentController@view'));
 Route::post('/deleteappointment', array('as' => 'deleteappointment', 'middleware' => 'auth', 'uses' => 'AppointmentController@delete'));
 
-Route::post('/doctors', array('as' => 'doctors', 'middleware' => 'auth', 'uses' => 'DoctorController@index'));
-Route::get('/newdoctor', array('as' => 'newdoctor', 'middleware' => 'auth', 'uses' => 'DoctorController@new'));
-Route::post('/editdoctor', array('as' => 'editdoctor', 'middleware' => 'auth', 'uses' => 'DoctorController@edit'));
+Route::get('/doctors', array('as' => 'doctors', 'uses' => 'DoctorController@index'));
+Route::get('/viewdoctor/{id}', array('as' => 'viewdoctor', 'uses' => 'DoctorController@view'));
 Route::post('/savedoctor', array('as' => 'savedoctor', 'middleware' => 'auth', 'uses' => 'DoctorController@save'));
-Route::get('/viewdoctor', array('as' => 'viewdoctor', 'middleware' => 'auth', 'uses' => 'DoctorController@view'));
-Route::post('/deletedoctor', array('as' => 'deletedoctor', 'middleware' => 'auth', 'uses' => 'DoctorController@delete'));
 
 
 Route::get('/patients', array('as' => 'patients', 'uses' => 'PatientController@index'));
 Route::get('/viewpatient/{id}', array('as' => 'viewpatient', 'uses' => 'PatientController@view'));
 Route::post('/savepatient', array('as' => 'savepatient', 'middleware' => 'auth', 'uses' => 'PatientController@save'));
-
-Route::post('/deletepatient', array('as' => 'deletepatient', 'middleware' => 'auth', 'uses' => 'PatientController@delete'));
-
-
-
 
 Route::get('/settings/{id?}', array('as' => 'settings', 'middleware' => 'auth', 'uses' => 'SettingController@index'));
 
