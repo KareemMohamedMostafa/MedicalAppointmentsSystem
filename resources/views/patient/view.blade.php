@@ -18,18 +18,16 @@
             <p class="text-mutted">Modified by <span id="view-usermodifiedname"> : <span id="view-updated_at"></p>
           </div>
         </div>
+        <h5><span id="view-doctorfullname"></h5> <small>Doctor</small>
         <hr>
         <div class="row">
-          <div class="col-3">
-            <h5><span id="view-doctorfullname"></h5> <small>Doctor</small>
-          </div>
-          <div class="col-3">
+          <div class="col-4">
             <h5><span id="view-height"></h5> <small>Height</small>
           </div>
-          <div class="col-3">
+          <div class="col-4">
             <h5><span id="view-weight"></h5> <small>Weight</small>
           </div>
-          <div class="col-3">
+          <div class="col-4">
             <h5><span id="view-bmi"></h5> <small>BMI</small>
           </div>
         </div>

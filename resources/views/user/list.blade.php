@@ -10,19 +10,17 @@
 
       <div class="col-lg-7 col-md-6 col-sm-12">
 
-        <h2>All Patients <small class="text-muted">Listing</small> </h2>
+        <h2>All Users <small class="text-muted">Listing</small> </h2>
 
       </div>
 
       <div class="col-lg-5 col-md-6 col-sm-12">
 
-        <button class="btn btn-primary btn-icon btn-round hidden-sm-down float-right m-l-10" type="button" data-toggle="modal" data-target="#formPatientModal" onclick="resetForm('patientForm')"> <i class="zmdi zmdi-plus"></i> </button>
-
         <ul class="breadcrumb float-md-right">
 
           <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="zmdi zmdi-home"></i> Home</a></li>
 
-          <li class="breadcrumb-item"><a href="javascript:void(0);">Patients</a></li>
+          <li class="breadcrumb-item"><a href="javascript:void(0);">Users</a></li>
 
           <li class="breadcrumb-item active">All</li>
 
@@ -58,11 +56,9 @@
 
                     <th>Name</th>
 
-                    <th>Age</th>
-
                     <th>Email</th>
 
-                    <th class="text-center">Phone</th>
+                    <th>Role</th>
 
                     <th class="text-center">Since</th>
 
@@ -82,23 +78,19 @@
 
                     <td><span class="list-icon"><img class="patients-img" src="{{ url('/getImage/' . $result->image) }}" /></span></td>
 
-                    <td>{{ $result->fullname }}</td>
-
-                    <td>{{ \FormatTime::LongTimeFilter($result->birthdate) }}</td>
+                    <td>{{ $result->name }}</td>
 
                     <td>{{ $result->email }}</td>
 
-                    <td class="text-center">{{ \FormatTime::phoneFormat($result->phone) }}</td>
+                    <td>{{ $result->role }}</td>
 
                     <td class="text-center">{{ \FormatTime::LongTimeFilter($result->created_at) }}</td>
 
-                    <td class="text-center"><span class="badge badge-success">{{ $result->status }}</span></td>
+                    <td class="text-center"><span class="badge badge-success">@if($result->status) active @else inactive @endif</span></td>
 
                     <td class="text-center">
 
-                      <button type="button" class="btn btn-default btn-icon btn-simple btn-icon-mini btn-round" data-toggle="modal" data-target="#viewModal" onclick="viewPatientModal('{{ $result->id }}')"><i class="zmdi zmdi-account-o"></i></button>
-
-                      <button type="button" class="btn btn-default btn-icon btn-simple btn-icon-mini btn-round" data-toggle="modal" data-target="#formPatientModal" onclick="editPatientModal('{{ $result->id }}')"><i class="zmdi zmdi-edit"></i></button>
+                      <button type="button" class="btn btn-default btn-icon btn-simple btn-icon-mini btn-round" data-toggle="modal" data-target="#formUserModal" onclick="editUserModal('{{ $result->id }}')"><i class="zmdi zmdi-edit"></i></button>
 
                     </td>
 
@@ -126,8 +118,6 @@
 
 </section>
 
-@include('patient.form')
-
-@include('patient.view')
+@include('user.form')
 
 @endsection

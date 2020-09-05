@@ -23,4 +23,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function user()
+    {
+
+        return $this->belongsTo('App\User', 'createdBy');
+    }
+
+    public function usermodified()
+    {
+
+        return $this->belongsTo('App\User', 'modifiedBy');
+    }
 }

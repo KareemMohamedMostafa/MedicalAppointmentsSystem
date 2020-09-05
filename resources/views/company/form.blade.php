@@ -1,10 +1,10 @@
-<div class="modal fade" id="formDoctorModal" tabindex="-1" role="dialog">
+<div class="modal fade" id="formCompanyModal" tabindex="-1" role="dialog">
 
     <div class="modal-dialog modal-lg" role="document">
 
         <div class="modal-content">
 
-            <form id="doctorForm" action="{{ route('savedoctor') }}" method="post" enctype="multipart/form-data">
+            <form id="companyForm" action="{{ route('savecompany') }}" method="post" enctype="multipart/form-data">
 
                 {!! csrf_field() !!}
 
@@ -18,7 +18,7 @@
 
                                 <div class="header">
 
-                                    <h2><strong>Doctor</strong> Data</h2>
+                                    <h2><strong>Company</strong> Data</h2>
 
                                 </div>
 
@@ -50,7 +50,7 @@
 
                                             <div class="form-group"> <input type="text" id="address" name="address" class="form-control" placeholder="Enter address" /> </div>
 
-                                            <label>Birthdate</label>
+                                            <label>Opening date</label>
 
                                             <div class="input-group"> <span class="input-group-addon"> <i class="zmdi zmdi-calendar"></i> </span> <input type="date" id="birthdate" name="birthdate" class="form-control" placeholder="Enter birthdate"> </div>
 
@@ -80,6 +80,10 @@
 
                                         <div class="col-md-6">
 
+                                            <label>Webiste</label>
+
+                                            <div class="form-group"> <input type="text" id="website" name="website" class="form-control" placeholder="Enter website"> </div>
+
                                             <label>Facebook</label>
 
                                             <div class="form-group"> <input type="text" id="facebook" name="facebook" class="form-control" placeholder="Enter facebook"> </div>
@@ -96,43 +100,9 @@
 
                                         <div class="col-md-6">
 
-                                            <label>Room</label>
-
-                                            <select class="form-control show-tick" id="roomid" name="roomid" required>
-
-                                                @if(count($rooms)>0)
-
-                                                @foreach($rooms as $room) <option value="{{ $room->id }}">{{ $room->name }}</option> @endforeach
-
-                                                @else <option value="">No data</option> @endif
-
-                                            </select>
-
                                             <label>Specialty</label>
 
-                                            <select class="form-control show-tick" id="specialtyid" name="specialtyid" required>
-
-                                                @if(count($specialtys)>0)
-
-                                                @foreach($specialtys as $specialty) <option value="{{ $specialty->id }}">{{ $specialty->name }}</option> @endforeach
-
-                                                @else <option value="">No data</option> @endif
-
-                                            </select>
-
-                                            <label>Gender</label>
-
-                                            <div class="form-group">
-
-                                                <select class="form-control show-tick" id="gender" name="gender">
-
-                                                    <option value="M">Male</option>
-
-                                                    <option value="F">Female</option>
-
-                                                </select>
-
-                                            </div>
+                                            <textarea name="specialty" id="specialty" rows="5" class="form-control" placeholder="Enter specialty"></textarea>
 
                                         </div>
 

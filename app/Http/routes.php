@@ -13,11 +13,26 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 // MedicalAppointments
 Route::auth();
 Route::get('/', array('as' => 'dashboard', 'middleware' => 'auth', 'uses' => 'DashboardController@index'));
+
 Route::get('/getImage/{filename}', array('as' => 'getImage', 'uses' => 'Controller@getImage'));
+Route::get('/doctors', array('as' => 'doctors', 'uses' => 'DoctorController@index'));
+Route::get('/viewdoctor/{id}', array('as' => 'viewdoctor', 'uses' => 'DoctorController@view'));
+Route::post('/savedoctor', array('as' => 'savedoctor', 'middleware' => 'auth', 'uses' => 'DoctorController@save'));
+Route::get('/patients', array('as' => 'patients', 'uses' => 'PatientController@index'));
+Route::post('/savepatient', array('as' => 'savepatient', 'middleware' => 'auth', 'uses' => 'PatientController@save'));
+Route::get('/viewpatient/{id}', array('as' => 'viewpatient', 'uses' => 'PatientController@view'));
+Route::get('/rooms', array('as' => 'rooms', 'uses' => 'RoomController@index'));
+Route::post('/saveroom', array('as' => 'saveroom', 'middleware' => 'auth', 'uses' => 'RoomController@save'));
+Route::get('/viewroom/{id}', array('as' => 'viewroom', 'uses' => 'RoomController@view'));
+Route::get('/specialtys', array('as' => 'specialtys', 'uses' => 'SpecialtyController@index'));
+Route::post('/savespecialty', array('as' => 'savespecialty', 'middleware' => 'auth', 'uses' => 'SpecialtyController@save'));
+Route::get('/viewspecialty/{id}', array('as' => 'viewspecialty', 'uses' => 'SpecialtyController@view'));
+Route::get('/companys', array('as' => 'companys', 'uses' => 'CompanyController@index'));
+Route::get('/viewcompany/{id}', array('as' => 'viewcompany', 'uses' => 'CompanyController@view'));
+Route::post('/savecompany', array('as' => 'savecompany', 'middleware' => 'auth', 'uses' => 'CompanyController@save'));
 
 
 Route::get('/searchappointment/{search?}/{filter?}', array('as' => 'searchappointment', 'middleware' => 'auth', 'uses' => 'AppointmentController@search'));
-
 Route::post('/appointments', array('as' => 'appointments', 'middleware' => 'auth', 'uses' => 'AppointmentController@index'));
 Route::get('/newappointment', array('as' => 'newappointment', 'middleware' => 'auth', 'uses' => 'AppointmentController@new'));
 Route::post('/editappointment', array('as' => 'editappointment', 'middleware' => 'auth', 'uses' => 'AppointmentController@edit'));
@@ -25,46 +40,10 @@ Route::post('/saveappointment', array('as' => 'saveappointment', 'middleware' =>
 Route::get('/viewappointment', array('as' => 'viewappointment', 'middleware' => 'auth', 'uses' => 'AppointmentController@view'));
 Route::post('/deleteappointment', array('as' => 'deleteappointment', 'middleware' => 'auth', 'uses' => 'AppointmentController@delete'));
 
-Route::get('/doctors', array('as' => 'doctors', 'uses' => 'DoctorController@index'));
-Route::get('/viewdoctor/{id}', array('as' => 'viewdoctor', 'uses' => 'DoctorController@view'));
-Route::post('/savedoctor', array('as' => 'savedoctor', 'middleware' => 'auth', 'uses' => 'DoctorController@save'));
 
-
-Route::get('/patients', array('as' => 'patients', 'uses' => 'PatientController@index'));
-Route::get('/viewpatient/{id}', array('as' => 'viewpatient', 'uses' => 'PatientController@view'));
-Route::post('/savepatient', array('as' => 'savepatient', 'middleware' => 'auth', 'uses' => 'PatientController@save'));
-
-Route::get('/settings/{id?}', array('as' => 'settings', 'middleware' => 'auth', 'uses' => 'SettingController@index'));
-
-
-
-Route::post('/rooms', array('as' => 'rooms', 'middleware' => 'auth', 'uses' => 'SettingController@index'));
-Route::get('/newroom', array('as' => 'newroom', 'middleware' => 'auth', 'uses' => 'SettingController@new'));
-Route::post('/editroom', array('as' => 'editroom', 'middleware' => 'auth', 'uses' => 'SettingController@edit'));
-Route::post('/saveroom', array('as' => 'saveroom', 'middleware' => 'auth', 'uses' => 'SettingController@save'));
-Route::get('/viewroom', array('as' => 'viewroom', 'middleware' => 'auth', 'uses' => 'SettingController@view'));
-Route::post('/deleteroom', array('as' => 'deleteroom', 'middleware' => 'auth', 'uses' => 'SettingController@delete'));
-
-Route::post('/specialties', array('as' => 'specialtys', 'middleware' => 'auth', 'uses' => 'SpecialtyController@index'));
-Route::get('/newspecialty', array('as' => 'newspecialty', 'middleware' => 'auth', 'uses' => 'SpecialtyController@new'));
-Route::post('/editspecialty', array('as' => 'editspecialty', 'middleware' => 'auth', 'uses' => 'SpecialtyController@edit'));
-Route::post('/savespecialty', array('as' => 'savespecialty', 'middleware' => 'auth', 'uses' => 'SpecialtyController@save'));
-Route::get('/viewspecialty', array('as' => 'viewspecialty', 'middleware' => 'auth', 'uses' => 'SpecialtyController@view'));
-Route::post('/deletespecialty', array('as' => 'deletespecialty', 'middleware' => 'auth', 'uses' => 'SpecialtyController@delete'));
-
-Route::post('/company', array('as' => 'company', 'middleware' => 'auth', 'uses' => 'CompanyController@index'));
-Route::get('/newcompany', array('as' => 'newcompany', 'middleware' => 'auth', 'uses' => 'CompanyController@new'));
-Route::post('/editcompany', array('as' => 'editcompany', 'middleware' => 'auth', 'uses' => 'CompanyController@edit'));
-Route::post('/savecompany', array('as' => 'savecompany', 'middleware' => 'auth', 'uses' => 'CompanyController@save'));
-
-Route::post('/users', array('as' => 'users', 'middleware' => 'auth', 'uses' => 'UserController@index'));
-Route::get('/newuser', array('as' => 'newuser', 'middleware' => 'auth', 'uses' => 'UserController@new'));
-Route::post('/edituser', array('as' => 'edituser', 'middleware' => 'auth', 'uses' => 'UserController@edit'));
-Route::post('/saveuser', array('as' => 'saveuser', 'middleware' => 'auth', 'uses' => 'UserController@save'));
-Route::get('/viewuser/{id?}', array('as' => 'viewuser', 'middleware' => 'auth', 'uses' => 'UserController@view'));
-Route::post('/deleteuser', array('as' => 'deleteuser', 'middleware' => 'auth', 'uses' => 'UserController@delete'));
-
-Route::get('/report/{id?}', array('as' => 'reports', 'middleware' => 'auth', 'uses' => 'ReportController@index'));
+Route::get('/reportpatient', array('as' => 'reportpatient', 'middleware' => 'auth', 'uses' => 'ReportController@index'));
+Route::get('/reportdoctor', array('as' => 'reportdoctor', 'middleware' => 'auth', 'uses' => 'ReportController@index'));
+Route::get('/reportroom', array('as' => 'reportroom', 'middleware' => 'auth', 'uses' => 'ReportController@index'));
 
 
 // WepApp like youtube videos Web app
@@ -83,4 +62,8 @@ Route::get('/buscar/{search?}/{filter?}', ['as'  => 'videoSearch', 'uses'  => 'V
 Route::post('/comment', array('as' => 'comment', 'middleware' => 'auth', 'uses' => 'CommentController@store'));
 Route::get('/delete-comment/{id}', array('as' => 'commentDelete', 'middleware' => 'auth', 'uses' => 'CommentController@delete'));
 
+
+Route::get('/users', array('as' => 'users', 'uses' => 'UserController@index'));
+Route::post('/saveuser', array('as' => 'saveuser', 'middleware' => 'auth', 'uses' => 'UserController@save'));
+Route::get('/viewuser/{id?}', array('as' => 'viewuser', 'uses' => 'UserController@view'));
 Route::get('/canal/{id}', array('as' => 'channel', 'uses' => 'UserController@channel'));

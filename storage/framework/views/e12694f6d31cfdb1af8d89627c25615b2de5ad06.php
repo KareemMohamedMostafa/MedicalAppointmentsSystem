@@ -74,7 +74,7 @@
 
     <div class="page-header">
 
-        <div class="page-header-image" style="background-image:url('<?php echo e(URL::asset('images/login.jpg')); ?>')"></div>
+        <div class="page-header-image" style="background-image:url('images/login.jpg')"></div>
 
         <div class="container">
 

@@ -1,4 +1,4 @@
-<div class="modal fade" id="formPacientModal" tabindex="-1" role="dialog">
+<div class="modal fade" id="formPatientModal" tabindex="-1" role="dialog">
 
   <div class="modal-dialog modal-lg" role="document">
 
@@ -36,7 +36,7 @@
 
                       <label>Email address</label>
 
-                      <div class="form-group"> <input type="text" id="email" name="email" class="form-control" placeholder="Enter email" required /> </div>
+                      <div class="form-group"> <input type="email" id="email" name="email" class="form-control" placeholder="Enter email" required /> </div>
 
                       <label>Phone</label>
 

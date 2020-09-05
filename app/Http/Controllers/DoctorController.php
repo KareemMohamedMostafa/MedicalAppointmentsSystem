@@ -24,11 +24,11 @@ class DoctorController extends Controller
     public function index()
     {
 
-        $result = Doctor::orderBy('fullname', 'asc')->paginate(10000);
+        $result = Doctor::orderBy('fullname', 'asc')->paginate(1000);
 
-        $rooms = Room::orderBy('name', 'asc')->paginate(100);
+        $rooms = Room::orderBy('name', 'asc')->paginate(1000);
 
-        $specialtys = Specialty::orderBy('name', 'asc')->paginate(100);
+        $specialtys = Specialty::orderBy('name', 'asc')->paginate(1000);
 
         $colors = array('card xl-blue', 'card xl-khaki', 'card xl-blue', 'card xl-parpl', 'card xl-pink', 'card xl-seagreen', 'card xl-blue', 'card xl-seagreen');
 

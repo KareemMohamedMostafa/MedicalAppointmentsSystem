@@ -48,7 +48,7 @@ function viewPatientModal(id) {
 
         }
 
-    })
+    });
 
 }
 
@@ -92,7 +92,7 @@ function editPatientModal(id) {
 
         }
 
-    })
+    });
 
 }
 
@@ -138,6 +138,125 @@ function editDoctorModal(id) {
 
         }
 
-    })
+    });
+
+}
+
+function editRoomModal(id) {
+
+    const data = isNaN(id) ? parseInt(id) : id;
+
+    $.ajax({
+
+        type: "get",
+
+        url: 'http://localhost:8000/viewroom/' + data,
+
+        success: function (response) {
+
+            resetForm('roomForm');
+
+            $('input[name=id]').val(response.id);
+
+            $('input[name=name]').val(response.name);
+
+            $("#companyid").val(response.companyid).change();
+
+        }
+
+    });
+
+}
+
+
+function editSpecialtyModal(id) {
+
+    const data = isNaN(id) ? parseInt(id) : id;
+
+    $.ajax({
+
+        type: "get",
+
+        url: 'http://localhost:8000/viewspecialty/' + data,
+
+        success: function (response) {
+
+            resetForm('specialtyForm');
+
+            $('input[name=id]').val(response.id);
+
+            $('input[name=name]').val(response.name);
+
+            $("#companyid").val(response.companyid).change();
+
+        }
+
+    });
+
+}
+
+function editCompanyModal(id) {
+
+    const data = isNaN(id) ? parseInt(id) : id;
+
+    $.ajax({
+
+        type: "get",
+
+        url: 'http://localhost:8000/viewcompany/' + data,
+
+        success: function (response) {
+
+            resetForm('companyForm');
+
+            $('input[name=id]').val(response.id);
+
+            $('input[name=fullname]').val(response.fullname);
+
+            $('input[name=birthdate]').val(response.birthdate);
+
+            $('input[name=website]').val(response.website);
+
+            $('input[name=facebook]').val(response.facebook);
+
+            $('input[name=twitter]').val(response.twitter);
+
+            $('input[name=instagram]').val(response.instagram);
+
+            $('input[name=email]').val(response.email);
+
+            $('input[name=phone]').val(response.phone);
+
+            $('input[name=address]').val(response.address);
+
+            $("textarea[name='specialty']").val(response.specialty);
+        }
+
+    });
+
+}
+
+function editUserModal(id) {
+
+    const data = isNaN(id) ? parseInt(id) : id;
+
+    $.ajax({
+
+        type: "get",
+
+        url: 'http://localhost:8000/viewuser/' + data,
+
+        success: function (response) {
+
+            resetForm('userForm');
+
+            $('input[name=id]').val(response.id);
+
+            $('input[name=name]').val(response.name);
+            
+            $("#role").val(response.role).change();
+        }
+
+    });
 
 }

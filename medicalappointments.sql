@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 05-09-2020 a las 08:17:32
+-- Tiempo de generación: 05-09-2020 a las 18:52:55
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.4.0
 
@@ -3763,19 +3763,24 @@ CREATE TABLE IF NOT EXISTS `comments` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `company`
+-- Estructura de tabla para la tabla `companys`
 --
 
-DROP TABLE IF EXISTS `company`;
-CREATE TABLE IF NOT EXISTS `company` (
+DROP TABLE IF EXISTS `companys`;
+CREATE TABLE IF NOT EXISTS `companys` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fullname` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `specialty` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `birthdate` date DEFAULT NULL,
   `email` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `website` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` text COLLATE utf8mb4_unicode_ci DEFAULT 'profile.jpg',
+  `facebook` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `instagram` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci DEFAULT 'profile.png',
   `status` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT 'active',
   `createdBy` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
@@ -3785,14 +3790,15 @@ CREATE TABLE IF NOT EXISTS `company` (
   KEY `fk_company_specialty` (`category`),
   KEY `fk_create_company` (`createdBy`),
   KEY `fk_modify_company` (`modifiedBy`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `company`
+-- Volcado de datos para la tabla `companys`
 --
 
-INSERT INTO `company` (`id`, `category`, `fullname`, `email`, `phone`, `address`, `website`, `image`, `status`, `createdBy`, `created_at`, `modifiedBy`, `updated_at`) VALUES
-(1, 'dental', 'Comfort Dental Clinic', 'comfort@clinic.com', '6194761600', '1265 Avocado Ave #102 El Cajon, CA 92020', 'https://www.dentistelcajon.com', 'profile.jpg', 'active', 1, '2020-09-03 19:30:15', 1, '2020-09-03 19:30:15');
+INSERT INTO `companys` (`id`, `category`, `fullname`, `specialty`, `birthdate`, `email`, `phone`, `address`, `website`, `facebook`, `twitter`, `instagram`, `image`, `status`, `createdBy`, `created_at`, `modifiedBy`, `updated_at`) VALUES
+(1, 'dental', 'Comfort Dental Clinic', 'Doctors, Dentist, Hospitals, Health clinics, Surgeons and Medical', '1984-12-26', 'comfort@clinic.com', '6194761600', '1265 Avocado Ave #102 El Cajon, CA 92020', 'https://sistenet.mx', 'https://www.facebook.com/solucionessistenet', 'https://www.linkedin.com/company/solucionessistenet', 'https://www.linkedin.com/in/isc-pedroesparza/', '1599323776company.jpg', 'active', 1, '2020-09-03 19:30:15', 1, '2020-09-05 16:36:16'),
+(2, NULL, 'Company Nurse Maryian', 'Doctors, Dentist, Hospitals, Health clinics, Surgeons and Medical', '2001-01-01', 'maryan@companynursemaryian', '6647230373', '14145 Campo Road, Jamul, CA 91935', 'https://sistenet.mx', 'https://www.facebook.com/solucionessistenet', 'https://www.linkedin.com/company/solucionessistenet', 'https://www.linkedin.com/in/isc-pedroesparza/', '1599324156company.jpg', 'active', 1, '2020-09-05 16:40:14', 1, '2020-09-05 16:42:36');
 
 -- --------------------------------------------------------
 
@@ -4395,7 +4401,7 @@ INSERT INTO `patients` (`id`, `doctorid`, `fullname`, `gender`, `birthdate`, `he
 (271, 68, 'Judas Slemming', 'M', '1995-02-19', '33.01', '22.41', '43.87', 'jslemming7i@twitter.com', '3293392708', '2 Melrose Pass', '1599285215member2.png', 'active', 1, '2020-09-03 19:54:50', 1, '2020-09-04 23:11:09'),
 (272, 128, 'Kathye Dignam', 'F', '2004-04-03', '115.06', '8.55', '40.39', 'kdignam7j@nytimes.com', '2014047496', '73045 Green Crossing', 'profile.png', 'active', 1, '2020-09-03 19:54:50', 1, '2020-09-04 23:56:25'),
 (273, 145, 'Anallise Dukelow', 'M', '2002-11-26', '20.19', '26.18', '8.52', 'adukelow7k@blogspot.com', '8403651259', '87331 Eastlawn Drive', '1599285215member2.png', 'active', 1, '2020-09-03 19:54:50', 1, '2020-09-04 23:10:26'),
-(274, 103, 'Abey Juett', 'F', '1955-06-01', '88.73', '34.28', '15.43', 'ajuett7l@cmu.edu', '1547993971', '554 Sachs Point', '1599285215member2.png', 'inactive', 1, '2020-09-03 19:54:50', 1, '2020-09-04 23:39:35'),
+(274, 103, 'Abey Juliett', 'F', '1955-06-01', '88.73', '34.28', '15.43', 'ajuett7l@cmu.edu', '1547993971', '554 Sachs Point', '1599285215member2.png', 'inactive', 1, '2020-09-03 19:54:50', 1, '2020-09-05 18:44:50'),
 (275, 73, 'Zonda Gorthy', 'M', '1973-03-04', '33.59', '18.38', '32.51', 'zgorthy7m@mapy.cz', '4417075560', '8 Farragut Crossing', '1599286073member2.png', 'active', 1, '2020-09-03 19:54:50', 1, '2020-09-05 06:07:53'),
 (276, 11, 'Fons Gimbart', 'F', '1951-08-22', '99.17', '47.77', '14.25', 'fgimbart7n@hc360.com', '5971230642', '7 Shopko Hill', '1599285206member1.png', 'active', 1, '2020-09-03 19:54:50', 1, '2020-09-04 23:09:42'),
 (277, 93, 'Leonore Freckingham', 'M', '1977-10-01', '66.58', '37.6', '11.08', 'lfreckingham7o@umn.edu', '8817946058', '15026 Reindahl Trail', '1599285215member2.png', 'active', 1, '2020-09-03 19:54:50', 1, '2020-09-04 23:10:26'),
@@ -5148,23 +5154,25 @@ CREATE TABLE IF NOT EXISTS `rooms` (
   KEY `fk_room_company` (`companyid`),
   KEY `fk_create_rooms` (`createdBy`),
   KEY `fk_modify_rooms` (`modifiedBy`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `rooms`
 --
 
 INSERT INTO `rooms` (`id`, `companyid`, `name`, `status`, `createdBy`, `created_at`, `modifiedBy`, `updated_at`) VALUES
-(1, 1, 'AB14', 'active', 1, '2020-09-03 19:34:15', 1, '2020-09-03 19:34:15'),
-(2, 1, 'CD43', 'active', 1, '2020-09-03 19:34:15', 1, '2020-09-03 19:34:15'),
-(3, 1, 'EF93', 'active', 1, '2020-09-03 19:34:15', 1, '2020-09-03 19:34:15'),
-(4, 1, 'GH40', 'active', 1, '2020-09-03 19:34:15', 1, '2020-09-03 19:34:15'),
-(5, 1, 'IJ46', 'active', 1, '2020-09-03 19:34:15', 1, '2020-09-03 19:34:15'),
-(6, 1, 'KL83', 'active', 1, '2020-09-03 19:34:15', 1, '2020-09-03 19:34:15'),
-(7, 1, 'MN54', 'active', 1, '2020-09-03 19:34:15', 1, '2020-09-03 19:34:15'),
-(8, 1, 'OP61', 'active', 1, '2020-09-03 19:34:15', 1, '2020-09-03 19:34:15'),
-(9, 1, 'QR94', 'active', 1, '2020-09-03 19:34:15', 1, '2020-09-03 19:34:15'),
-(10, 1, 'ST35', 'active', 1, '2020-09-03 19:34:15', 1, '2020-09-03 19:34:15');
+(1, 1, 'CI01', 'active', 1, '2020-09-03 19:34:15', 1, '2020-09-05 15:57:02'),
+(2, 1, 'CI02', 'active', 1, '2020-09-03 19:34:15', 1, '2020-09-05 15:57:09'),
+(3, 1, 'SU01', 'active', 1, '2020-09-03 19:34:15', 1, '2020-09-05 15:57:17'),
+(4, 1, 'SU02', 'active', 1, '2020-09-03 19:34:15', 1, '2020-09-05 15:57:23'),
+(5, 1, 'XR01', 'active', 1, '2020-09-03 19:34:15', 1, '2020-09-05 15:57:29'),
+(6, 1, 'XR02', 'active', 1, '2020-09-03 19:34:15', 1, '2020-09-05 15:57:34'),
+(7, 1, 'CP01', 'active', 1, '2020-09-03 19:34:15', 1, '2020-09-05 15:57:41'),
+(8, 1, 'CP02', 'active', 1, '2020-09-03 19:34:15', 1, '2020-09-05 15:57:47'),
+(9, 1, 'SY01', 'active', 1, '2020-09-03 19:34:15', 1, '2020-09-05 15:58:00'),
+(10, 1, 'SY02', 'active', 1, '2020-09-03 19:34:15', 1, '2020-09-05 15:58:08'),
+(11, 1, 'QA01', 'active', 1, '2020-09-05 15:58:48', 1, '2020-09-05 15:59:05'),
+(12, 1, 'WH01', 'active', 1, '2020-09-05 15:58:54', 1, '2020-09-05 15:59:13');
 
 -- --------------------------------------------------------
 
@@ -5186,7 +5194,7 @@ CREATE TABLE IF NOT EXISTS `specialtys` (
   KEY `fk_specialty_company` (`companyid`),
   KEY `fk_create_specialtys` (`createdBy`),
   KEY `fk_modify_specialtys` (`modifiedBy`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `specialtys`
@@ -5201,8 +5209,8 @@ INSERT INTO `specialtys` (`id`, `companyid`, `name`, `status`, `createdBy`, `cre
 (6, 1, 'Gastroenterology', 'active', 1, '2020-09-03 19:41:19', 1, '2020-09-03 19:41:44'),
 (7, 1, 'Gynegology and Obstetrics', 'active', 1, '2020-09-03 19:41:19', 1, '2020-09-03 19:41:44'),
 (8, 1, 'Hematology', 'active', 1, '2020-09-03 19:41:19', 1, '2020-09-03 19:41:44'),
-(9, 1, 'Allergology', 'active', 1, '2020-09-03 19:41:19', 1, '2020-09-03 19:41:44'),
-(10, 1, 'Cardiology', 'active', 1, '2020-09-03 19:41:19', 1, '2020-09-03 19:41:44'),
+(9, 1, 'Allergology', 'active', 1, '2020-09-03 19:41:19', 1, '2020-09-05 16:05:20'),
+(10, 1, 'Surgeon', 'active', 1, '2020-09-03 19:41:19', 1, '2020-09-05 16:06:05'),
 (11, 1, 'Heart surgery', 'active', 1, '2020-09-03 19:41:19', 1, '2020-09-03 19:41:44'),
 (12, 1, 'General Surgery', 'active', 1, '2020-09-03 19:41:19', 1, '2020-09-03 19:41:44'),
 (13, 1, 'Plastic surgery', 'active', 1, '2020-09-03 19:41:19', 1, '2020-09-03 19:41:44'),
@@ -5232,7 +5240,8 @@ INSERT INTO `specialtys` (`id`, `companyid`, `name`, `status`, `createdBy`, `cre
 (37, 1, 'Rehabilitation Y M. Deportiva', 'active', 1, '2020-09-03 19:41:19', 1, '2020-09-03 19:41:44'),
 (38, 1, 'Rheumatology', 'active', 1, '2020-09-03 19:41:19', 1, '2020-09-03 19:41:44'),
 (39, 1, 'Traumatology', 'active', 1, '2020-09-03 19:41:19', 1, '2020-09-03 19:41:44'),
-(40, 1, 'Urology', 'active', 1, '2020-09-03 19:41:19', 1, '2020-09-03 19:41:44');
+(40, 1, 'Urology', 'active', 1, '2020-09-03 19:41:19', 1, '2020-09-03 19:41:44'),
+(41, 1, 'Cancer', 'active', 1, '2020-09-05 16:05:40', 1, '2020-09-05 16:05:40');
 
 -- --------------------------------------------------------
 
@@ -5248,33 +5257,33 @@ CREATE TABLE IF NOT EXISTS `users` (
   `name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image` text COLLATE utf8mb4_unicode_ci DEFAULT 'img/admin.jpg ',
   `remember_token` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `role` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT '''user''',
+  `role` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT '''visitor''',
   `status` tinyint(1) DEFAULT 0,
-  `updated_at` datetime DEFAULT current_timestamp(),
-  `createdBy` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `createdDT` datetime DEFAULT current_timestamp(),
+  `createdBy` int(11) DEFAULT 1,
+  `created_at` datetime DEFAULT current_timestamp(),
   `modifiedBy` int(11) DEFAULT 1,
-  `modifiedDT` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` datetime DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `name`, `image`, `remember_token`, `role`, `status`, `updated_at`, `createdBy`, `createdDT`, `modifiedBy`, `modifiedDT`) VALUES
-(1, 'atencion@sistenet.mx', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Admin', '1598999809camiseta.png', '3hF5yMmqUq1CYdGkhwNihBQqyhTBal3VX4ZOvy9M5JRiFqjUPJe9ikNHiAZF', 'admin', 1, '2020-09-05 06:39:05', '1', '2020-03-09 22:32:33', 1, '2020-08-27 21:22:37'),
-(2, 'isc.pedroesparza@gmail.com', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Pedro', '1598999809camiseta.png', 'gv5uGCj440INcuN52qJHyjrGlS9VBO6sMEelVOeVcjlUlerBR9DBDcnj8vwW', 'admin', 1, '2020-09-03 20:41:22', '1', '2020-09-03 11:02:30', 1, '2020-09-03 11:02:30'),
-(3, 'aberrey2@washington.edu', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Arabelax', '1598999809camiseta.png', NULL, 'admin', 1, NULL, '1', '2020-03-09 22:32:33', 1, '2020-08-27 21:21:44'),
-(4, 'esanper3@illinois.edu', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Esan Per', '1598999809camiseta.png', NULL, 'admin', 1, NULL, '1', '2020-03-09 22:32:33', NULL, '2020-08-27 21:21:44'),
-(5, 'maria@magdalena.com', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Maria Magdalena', '1598999809camiseta.png', NULL, 'admin', 1, NULL, '1', '2020-04-08 16:57:10', 1, '2020-08-27 21:21:44'),
-(6, 'codaly5@histats.com', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Kerwinn', '1598999809camiseta.png', NULL, 'admin', 1, NULL, '1', '2020-03-09 22:32:33', NULL, '2020-08-27 21:21:44'),
-(7, 'karlita@moreno.com', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Karlta Moreno', '1598999809camiseta.png', NULL, 'admin', 1, NULL, '1', '2020-04-08 16:54:37', 1, '2020-08-27 21:21:44'),
-(8, 'hslograve7@epa.gov', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Hoswell', '1598999809camiseta.png', NULL, 'user', 1, NULL, '1', '2020-03-09 22:32:33', NULL, '2020-08-27 21:21:44'),
-(9, 'rsabban8@time.com', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Sela', '1598999809camiseta.png', NULL, 'user', 1, NULL, '1', '2020-03-09 22:32:33', 1, '2020-08-27 21:21:44'),
-(10, 'bpipworth9@geocities.jp', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Drew A', '1598999809camiseta.png', NULL, 'user', 1, NULL, '1', '2020-03-09 22:32:33', NULL, '2020-08-27 21:21:44'),
-(11, 'dmccolma@dedecms.com', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Titos', '1598999809camiseta.png', NULL, 'visitor', 1, NULL, '1', '2020-03-09 22:32:33', 1, '2020-08-27 21:21:44'),
-(12, 'panchito@lopez.com', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Panchito Lopez', '1598999809camiseta.png', NULL, 'visitor', 1, NULL, '1', '2020-04-08 16:58:21', 1, '2020-08-27 21:21:44');
+INSERT INTO `users` (`id`, `email`, `password`, `name`, `image`, `remember_token`, `role`, `status`, `createdBy`, `created_at`, `modifiedBy`, `updated_at`) VALUES
+(1, 'atencion@sistenet.mx', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Soluciones Sistenet', '1599328368admin.png', 'GUfLS8wte2JqBoVzBP6Ca1tOew9IeYKqSzC2jE5wlpbSFvoAVx20JK9ZJbLd', 'admin', 1, 1, '2020-03-09 22:32:33', 1, '2020-09-05 18:50:29'),
+(2, 'isc.pedroesparza@gmail.com', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Zinedine Zidane', '1599331800avatar2.png', 'gv5uGCj440INcuN52qJHyjrGlS9VBO6sMEelVOeVcjlUlerBR9DBDcnj8vwW', 'admin', 1, 1, '2020-09-03 11:02:30', 1, '2020-09-05 18:50:00'),
+(3, 'aberrey2@washington.edu', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Arabela Zine', '1599328444avatar3.png', NULL, 'admin', 1, 1, '2020-03-09 22:32:33', 1, '2020-09-05 18:48:23'),
+(4, 'esanper3@illinois.edu', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Esan Pier', '1599328377avatar6.png', NULL, 'admin', 1, 1, '2020-03-09 22:32:33', 1, '2020-09-05 18:48:02'),
+(5, 'maria@magdalena.com', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Maria Magdalena', '1599328469avatar3.png', NULL, 'admin', 1, 1, '2020-04-08 16:57:10', 1, '2020-09-05 17:54:29'),
+(6, 'kerwinn@lopez.com', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Kerwinn', '1599328462avatar2.png', NULL, 'admin', 1, 1, '2020-03-09 22:32:33', 1, '2020-09-05 17:55:28'),
+(7, 'karlita@moreno.com', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Karlta Moreno', '1599328457admin.png', NULL, 'admin', 1, 1, '2020-04-08 16:54:37', 1, '2020-09-05 17:54:17'),
+(8, 'hslograve7@epa.gov', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Hoswell', '1599328451avatar4.png', NULL, 'user', 1, 1, '2020-03-09 22:32:33', 1, '2020-09-05 17:54:11'),
+(9, 'rsabban8@time.com', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Sela', '1599328487avatar6.png', NULL, 'user', 1, 1, '2020-03-09 22:32:33', 1, '2020-09-05 17:54:47'),
+(10, 'bpipworth9@geocities.jp', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Drew A', '1599328363avatar5.png', NULL, 'user', 1, 1, '2020-03-09 22:32:33', 1, '2020-09-05 17:52:43'),
+(11, 'dmccolma@dedecms.com', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Titos', '1599331809avatar6.png', NULL, 'visitor', 1, 1, '2020-03-09 22:32:33', 1, '2020-09-05 18:50:09'),
+(12, 'panchito@lopez.com', '$2y$10$U2vHDHWGnOOQu8MnfK.AOOPXhDXTpAaZV4cnKviu4TGYXFugUAhj2', 'Panchito Lopez', '1599328475avatar4.png', NULL, 'visitor', 1, 1, '2020-04-08 16:58:21', 1, '2020-09-05 17:54:35');
 
 -- --------------------------------------------------------
 
@@ -5334,9 +5343,9 @@ ALTER TABLE `comments`
   ADD CONSTRAINT `fk_comment_video` FOREIGN KEY (`video_id`) REFERENCES `videos` (`id`);
 
 --
--- Filtros para la tabla `company`
+-- Filtros para la tabla `companys`
 --
-ALTER TABLE `company`
+ALTER TABLE `companys`
   ADD CONSTRAINT `fk_create_company` FOREIGN KEY (`createdBy`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `fk_modify_company` FOREIGN KEY (`modifiedBy`) REFERENCES `users` (`id`);
 
@@ -5363,7 +5372,7 @@ ALTER TABLE `patients`
 ALTER TABLE `rooms`
   ADD CONSTRAINT `fk_create_rooms` FOREIGN KEY (`createdBy`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `fk_modify_rooms` FOREIGN KEY (`modifiedBy`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `fk_room_company` FOREIGN KEY (`companyid`) REFERENCES `company` (`id`);
+  ADD CONSTRAINT `fk_room_company` FOREIGN KEY (`companyid`) REFERENCES `companys` (`id`);
 
 --
 -- Filtros para la tabla `specialtys`
@@ -5371,7 +5380,7 @@ ALTER TABLE `rooms`
 ALTER TABLE `specialtys`
   ADD CONSTRAINT `fk_create_specialtys` FOREIGN KEY (`createdBy`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `fk_modify_specialtys` FOREIGN KEY (`modifiedBy`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `fk_specialty_company` FOREIGN KEY (`companyid`) REFERENCES `company` (`id`);
+  ADD CONSTRAINT `fk_specialty_company` FOREIGN KEY (`companyid`) REFERENCES `companys` (`id`);
 
 --
 -- Filtros para la tabla `videos`

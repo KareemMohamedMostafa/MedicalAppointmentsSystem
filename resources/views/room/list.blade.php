@@ -10,19 +10,19 @@
 
       <div class="col-lg-7 col-md-6 col-sm-12">
 
-        <h2>All Patients <small class="text-muted">Listing</small> </h2>
+        <h2>All Rooms <small class="text-muted">Listing</small> </h2>
 
       </div>
 
       <div class="col-lg-5 col-md-6 col-sm-12">
 
-        <button class="btn btn-primary btn-icon btn-round hidden-sm-down float-right m-l-10" type="button" data-toggle="modal" data-target="#formPatientModal" onclick="resetForm('patientForm')"> <i class="zmdi zmdi-plus"></i> </button>
+        <button class="btn btn-primary btn-icon btn-round hidden-sm-down float-right m-l-10" type="button" data-toggle="modal" data-target="#formRoomModal" onclick="resetForm('roomForm')"> <i class="zmdi zmdi-plus"></i> </button>
 
         <ul class="breadcrumb float-md-right">
 
           <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="zmdi zmdi-home"></i> Home</a></li>
 
-          <li class="breadcrumb-item"><a href="javascript:void(0);">Patients</a></li>
+          <li class="breadcrumb-item"><a href="javascript:void(0);">Rooms</a></li>
 
           <li class="breadcrumb-item active">All</li>
 
@@ -54,15 +54,9 @@
 
                   <tr>
 
-                    <th>Img</th>
-
                     <th>Name</th>
 
-                    <th>Age</th>
-
-                    <th>Email</th>
-
-                    <th class="text-center">Phone</th>
+                    <th>Company</th>
 
                     <th class="text-center">Since</th>
 
@@ -80,15 +74,9 @@
 
                   <tr>
 
-                    <td><span class="list-icon"><img class="patients-img" src="{{ url('/getImage/' . $result->image) }}" /></span></td>
+                    <td>{{ $result->name }}</td>
 
-                    <td>{{ $result->fullname }}</td>
-
-                    <td>{{ \FormatTime::LongTimeFilter($result->birthdate) }}</td>
-
-                    <td>{{ $result->email }}</td>
-
-                    <td class="text-center">{{ \FormatTime::phoneFormat($result->phone) }}</td>
+                    <td>{{ $result->company->fullname }}</td>
 
                     <td class="text-center">{{ \FormatTime::LongTimeFilter($result->created_at) }}</td>
 
@@ -96,9 +84,7 @@
 
                     <td class="text-center">
 
-                      <button type="button" class="btn btn-default btn-icon btn-simple btn-icon-mini btn-round" data-toggle="modal" data-target="#viewModal" onclick="viewPatientModal('{{ $result->id }}')"><i class="zmdi zmdi-account-o"></i></button>
-
-                      <button type="button" class="btn btn-default btn-icon btn-simple btn-icon-mini btn-round" data-toggle="modal" data-target="#formPatientModal" onclick="editPatientModal('{{ $result->id }}')"><i class="zmdi zmdi-edit"></i></button>
+                      <button type="button" class="btn btn-default btn-icon btn-simple btn-icon-mini btn-round" data-toggle="modal" data-target="#formRoomModal" onclick="editRoomModal('{{ $result->id }}')"><i class="zmdi zmdi-edit"></i></button>
 
                     </td>
 
@@ -126,8 +112,6 @@
 
 </section>
 
-@include('patient.form')
-
-@include('patient.view')
+@include('room.form')
 
 @endsection
