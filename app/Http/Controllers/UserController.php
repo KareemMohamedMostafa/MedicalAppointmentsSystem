@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
-
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
+use App\Http\Requests;
 use App\User;
-
 use App\Video;
-
 use App\Comment;
 
 class UserController extends Controller
@@ -63,23 +60,56 @@ class UserController extends Controller
     {
 
         $validate = $this->validate($request, [
-            'name' => 'required',
-            'role' => 'required'
+            'editname' => 'required',
+            'editrole' => 'required'
         ]);
 
         $authUser = \Auth::user();
 
-        if (isset($request->id) && $request->id > 0) {
+        $obj = User::findOrFail($request->editid);
 
-            $obj = User::findOrFail($request->id);
-        } else {
-            $obj = new User();
-            $obj->createdBy = $authUser->id;
+        $obj->modifiedby = $authUser->id;
+        $obj->name = $request->input('editname');
+        $obj->role = $request->input('editrole');
+
+        if (!is_null($request->editpassword) && $request->editpassword != '') {
+            $pwd = bcrypt($request->input('editpassword'));
+            $obj->password = $pwd;
         }
 
+        $image = $request->file('editimage');
+        if ($image) {
+            $obj->image = $request->input('editimage');
+            $image_path = time() . $image->getClientOriginalName();
+            \Storage::disk('images')->delete($obj->image);
+            \Storage::disk('images')->put($image_path, \File::get($image));
+
+            $obj->image = $image_path;
+        }
+
+        $obj->update();
+
+        return redirect()->route('users')->with(array('message' => 'Successfully saved'));
+    }
+
+    public function create(Request $request)
+    {
+        $validate = $this->validate($request, [
+            'name' => 'required',
+            'role' => 'required',
+            'email' => 'required'
+        ]);
+
+        $authUser = \Auth::user();
+
+        $obj = new User();
+        $obj->createdBy = $authUser->id;
         $obj->modifiedby = $authUser->id;
         $obj->name = $request->input('name');
         $obj->role = $request->input('role');
+        $obj->email = $request->input('email');
+        $pwd = bcrypt($request->input('password'));
+        $obj->password = $pwd;
 
         $image = $request->file('image');
         if ($image) {
@@ -91,7 +121,7 @@ class UserController extends Controller
             $obj->image = $image_path;
         }
 
-        $obj->id ? $obj->update() : $obj->save();
+        $obj->save();
 
         return redirect()->route('users')->with(array('message' => 'Successfully saved'));
     }

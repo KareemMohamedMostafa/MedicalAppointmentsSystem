@@ -16,6 +16,8 @@
 
       <div class="col-lg-5 col-md-6 col-sm-12">
 
+        <button class="btn btn-primary btn-icon btn-round hidden-sm-down float-right m-l-10" type="button" data-toggle="modal" data-target="#newUserModal" onclick="resetForm('newUserForm')"> <i class="zmdi zmdi-plus"></i> </button>
+
         <ul class="breadcrumb float-md-right">
 
           <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="zmdi zmdi-home"></i> Home</a></li>
@@ -82,17 +84,13 @@
 
                     <td>{{ $result->email }}</td>
 
-                    <td>{{ $result->role }}</td>
+                    <td>{{ ucfirst($result->role) }}</td>
 
                     <td class="text-center">{{ \FormatTime::LongTimeFilter($result->created_at) }}</td>
 
                     <td class="text-center"><span class="badge badge-success">@if($result->status) active @else inactive @endif</span></td>
 
-                    <td class="text-center">
-
-                      <button type="button" class="btn btn-default btn-icon btn-simple btn-icon-mini btn-round" data-toggle="modal" data-target="#formUserModal" onclick="editUserModal('{{ $result->id }}')"><i class="zmdi zmdi-edit"></i></button>
-
-                    </td>
+                    <td class="text-center"> <button type="button" class="btn btn-default btn-icon btn-simple btn-icon-mini btn-round" data-toggle="modal" data-target="#editUserModal" onclick="editUserModal('{{ $result->id }}')"><i class="zmdi zmdi-edit"></i></button> </td>
 
                   </tr>
 
@@ -118,6 +116,8 @@
 
 </section>
 
-@include('user.form')
+@include('user.new')
+
+@include('user.edit')
 
 @endsection

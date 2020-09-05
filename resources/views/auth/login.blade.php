@@ -26,25 +26,7 @@
 
     </div>
 
-    <div class="footer text-center">
-
-        <button type="submit" class="btn l-cyan btn-round btn-lg btn-block waves-effect waves-light"> <i class="fa fa-btn fa-sign-in"></i> Login </button>
-
-        <a href="{{ url('/password/reset') }}" class="link">
-
-            <span class="m-t-20">Forgot Password?</span>
-
-        </a>
-
-        |
-
-        <a href="{{ url('/register') }}" class="link">
-
-            <span class="m-t-20">New patient!</span>
-
-        </a>
-
-    </div>
+    <div class="footer text-center"> <button type="submit" class="btn l-cyan btn-round btn-lg btn-block waves-effect waves-light"> <i class="fa fa-btn fa-sign-in"></i> Login </button> </div>
 
 </form>
 

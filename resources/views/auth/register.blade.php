@@ -1,7 +1,10 @@
 @extends('layouts.login')
 
 @section('content')
-<form class="form" role="form" method="post" action="{{ url('/register') }}">
+@if(session('message'))
+<div class="alert alert-success">{{ session('message') }}</div>
+@endif
+<form class="form" role="form" method="post" action="{{ route('/register') }}">
     {{ csrf_field() }}
 
 
@@ -17,7 +20,7 @@
 
         <div class="input-group input-lg">
 
-            <input type="password" name="password" placeholder="Password" class="form-control" />
+            <input type="password" name="password" placeholder="Password" class="form-control" required />
 
             <span class="input-group-addon"> <i class="zmdi zmdi-lock"></i> </span>
 
@@ -25,7 +28,7 @@
 
         <div class="input-group input-lg">
 
-            <input type="password" name="password_confirmation" placeholder="Confirm password" class="form-control" />
+            <input type="password" name="password_confirmation" placeholder="Confirm password" class="form-control" required />
 
             <span class="input-group-addon"> <i class="zmdi zmdi-lock"></i> </span>
 
@@ -37,19 +40,7 @@
 
         <button type="submit" class="btn l-cyan btn-round btn-lg btn-block waves-effect waves-light"> <i class="fa fa-btn fa-sign-in"></i> Register </button>
 
-        <a href="{{ url('/login') }}" class="link">
-
-            <span class="m-t-20">Have account?</span>
-
-        </a>
-
-        |
-
-        <a href="{{ url('/register') }}" class="link">
-
-            <span class="m-t-20">New patient!</span>
-
-        </a>
+        <a href="{{ url('/login') }}" class="link"> <span class="m-t-20">Already have account ?</span> </a>
 
     </div>
 

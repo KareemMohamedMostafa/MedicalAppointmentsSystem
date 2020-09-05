@@ -248,13 +248,13 @@ function editUserModal(id) {
 
         success: function (response) {
 
-            resetForm('userForm');
+            resetForm('editUserForm');
 
-            $('input[name=id]').val(response.id);
+            $('input[name=editid]').val(response.id);
 
-            $('input[name=name]').val(response.name);
-            
-            $("#role").val(response.role).change();
+            $('input[name=editname]').val(response.name);
+
+            $("#editrole").val(response.role).change();
         }
 
     });

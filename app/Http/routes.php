@@ -65,5 +65,6 @@ Route::get('/delete-comment/{id}', array('as' => 'commentDelete', 'middleware' =
 
 Route::get('/users', array('as' => 'users', 'uses' => 'UserController@index'));
 Route::post('/saveuser', array('as' => 'saveuser', 'middleware' => 'auth', 'uses' => 'UserController@save'));
+Route::post('/createuser', array('as' => 'createuser', 'middleware' => 'auth', 'uses' => 'UserController@create'));
 Route::get('/viewuser/{id?}', array('as' => 'viewuser', 'uses' => 'UserController@view'));
 Route::get('/canal/{id}', array('as' => 'channel', 'uses' => 'UserController@channel'));
