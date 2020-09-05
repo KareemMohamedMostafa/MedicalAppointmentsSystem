@@ -18,8 +18,6 @@
 
     <link rel="stylesheet" href="{{ URL::asset('plugins/bootstrap/css/bootstrap.min.css') }}" />
 
-    <link rel="stylesheet" href="{{ URL::asset('plugins/jquery-datatable/dataTables.bootstrap4.min.css') }}" />
-
     <link rel="stylesheet" href="{{ URL::asset('plugins/jvectormap/jquery-jvectormap-2.0.3.min.css') }}" />
 
     <link rel="stylesheet" href="{{ URL::asset('plugins/morrisjs/morris.min.css') }}" />
@@ -28,9 +26,15 @@
 
     <link rel="stylesheet" href="{{ URL::asset('css/color_skins.css') }}" />
 
+    <link rel="stylesheet" href="{{ URL::asset('plugins/jquery-datatable/dataTables.bootstrap4.min.css') }}" />
+
+    <link rel="stylesheet" href="{{ URL::asset('plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" />
+
+    <link rel="stylesheet" href="{{ URL::asset('plugins/bootstrap-select/css/bootstrap-select.css') }}" />
+
 </head>
 
-<body class="theme-cyan menu_dark" id="app-layout">
+<body class="theme-blue" id="app-layout">
 
     <div class="overlay"></div>
 
@@ -50,30 +54,41 @@
 
     <script src="{{ URL::asset('bundles/knob.bundle.js') }}"></script>
 
-    <script src="{{ URL::asset('bundles/countTo.bundle.js') }}"></script>
-
     <script src="{{ URL::asset('bundles/sparkline.bundle.js') }}"></script>
+
+    <script src="{{ URL::asset('bundles/countTo.bundle.js') }}"></script>
 
     <script src="{{ URL::asset('bundles/mainscripts.bundle.js') }}"></script>
 
     <script src="{{ URL::asset('js/pages/index.js') }}"></script>
 
-    <script src="{{ URL::ASSET('bundles/datatablescripts.bundle.js') }}"></script>
+    <script src="{{ URL::asset('bundles/datatablescripts.bundle.js') }}"></script>
 
-    <script src="{{ URL::ASSET('plugins/jquery-datatable/buttons/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ URL::asset('plugins/jquery-datatable/buttons/dataTables.buttons.min.js') }}"></script>
 
-    <script src="{{ URL::ASSET('plugins/jquery-datatable/buttons/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ URL::asset('plugins/jquery-datatable/buttons/buttons.bootstrap4.min.js') }}"></script>
 
-    <script src="{{ URL::ASSET('plugins/jquery-datatable/buttons/buttons.colVis.min.js') }}"></script>
+    <script src="{{ URL::asset('plugins/jquery-datatable/buttons/buttons.colVis.min.js') }}"></script>
 
-    <script src="{{ URL::ASSET('plugins/jquery-datatable/buttons/buttons.flash.min.js') }}"></script>
+    <script src="{{ URL::asset('plugins/jquery-datatable/buttons/buttons.flash.min.js') }}"></script>
 
-    <script src="{{ URL::ASSET('plugins/jquery-datatable/buttons/buttons.html5.min.js') }}"></script>
+    <script src="{{ URL::asset('plugins/jquery-datatable/buttons/buttons.html5.min.js') }}"></script>
 
-    <script src="{{ URL::ASSET('plugins/jquery-datatable/buttons/buttons.print.min.js') }}"></script>
+    <script src="{{ URL::asset('plugins/jquery-datatable/buttons/buttons.print.min.js') }}"></script>
 
-    <script src="{{ URL::ASSET('js/pages/tables/jquery-datatable.js') }}"></script>
+    <script src="{{ URL::asset('plugins/momentjs/moment.js') }}"></script>
 
+    <script src="{{ URL::asset('plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
+
+    <script src="{{ URL::asset('js/pages/tables/jquery-datatable.js') }}"></script>
+
+    <script src="{{ URL::asset('js/pages/forms/basic-form-elements.js') }}"></script>
+
+    <script src="{{ URL::asset('plugins/bootstrap-notify/bootstrap-notify.js') }}"></script>
+
+    <script src="{{ URL::asset('js/pages/ui/notifications.js') }}"></script>
+
+    <script src="{{ URL::asset('js/custom.js') }}"></script>
 </body>
 
 </html>

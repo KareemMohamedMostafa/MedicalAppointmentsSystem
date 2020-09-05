@@ -38,51 +38,15 @@
 
       <li class="header">MAIN</li>
 
-      <li class="active open"> <a href="{{ url('/') }}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a> </li>
+      <li class="active"> <a href="{{ url('/') }}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a> </li>
 
-      <li>
+      <li> <a href="{{ route('saveappointment') }}"><i class="zmdi zmdi-calendar-check"></i><span>Book Appointment</span></a> </li>
 
-        <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-calendar-check"></i><span>Appointment</span> </a>
+      <li> <a href="{{ route('appointments') }}"><i class="zmdi zmdi-copy"></i><span>All appointments</span></a> </li>
 
-        <ul class="ml-menu">
+      <li> <a href="{{ route('doctors') }}"><i class="zmdi zmdi-account-add"></i><span>All Doctors</span></a> </li>
 
-          <li><a href="{{ route('appointments') }}">Doctor Schedule</a></li>
-
-          <li><a href="{{ route('saveappointment') }}">Book Appointment</a></li>
-
-        </ul>
-
-      </li>
-
-      <li>
-
-        <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-add"></i><span>Doctors</span> </a>
-
-        <ul class="ml-menu">
-
-          <li><a href="{{ route('savedoctor') }}">Add Doctor</a></li>
-
-          <li><a href="{{ route('doctors') }}">All Doctors</a></li>
-
-          <li><a href="{{ route('viewuser') }}">Doctor Profile</a></li>
-
-        </ul>
-
-      </li>
-
-      <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-o"></i><span>Patients</span> </a>
-
-        <ul class="ml-menu">
-
-          <li><a href="{{ route('patients') }}">All Patients</a></li>
-
-          <li><a href="{{ route('newpatient') }}">Add Patient</a></li>
-
-          <li><a href="{{ route('viewpatient') }}">Patient Profile</a></li>
-
-        </ul>
-
-      </li>
+      <li> <a href="{{ route('patients') }}"><i class="zmdi zmdi-account-o"></i><span>All Patients</span></a> </li>
 
       <li class="header">ADMIN</li>
 

@@ -8,18 +8,16 @@ email: atencion@sistenet.mx | Password: Admin123
 
 Modules
 * Dashboard
-* New order Wizard
-* Directory center (clients, suppliers)
-* Inventory
-* Products
-* Category
-* Projects references
-* User control and permissions
-* Custom UX settings
-* I've used the following resources as listed
+* Appointments
+* Doctors grid
+* Patients Listings
+* Reports
+* Settings
+* Users control
 
 Technologies
-* AngularJS
+* Laravel 5.2
+* WebApp
 * Js
 * Bootstrap
 * CSS
@@ -49,14 +47,6 @@ Patients
 * List
 * Add
 * Appointments
-
-Contact
- * Related to patient
- * Patient also be a contact
-
-Payment
-* List
-* Add
 
 Reports
  * Appointments x patient

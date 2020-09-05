@@ -1,8 +1,21 @@
 <?php
 
+header("Access-Control-Allow-Origin: *");
+
+header("Content-Type: application/json; charset=UTF-8");
+
+header("Access-Control-Allow-Methods: POST, GET, PUT, PATCH, DELETE");
+
+header("Access-Control-Max-Age: 3600");
+
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
 // MedicalAppointments
 Route::auth();
 Route::get('/', array('as' => 'dashboard', 'middleware' => 'auth', 'uses' => 'DashboardController@index'));
+Route::get('/getImage/{filename}', array('as' => 'getImage', 'uses' => 'Controller@getImage'));
+
+
 Route::get('/searchappointment/{search?}/{filter?}', array('as' => 'searchappointment', 'middleware' => 'auth', 'uses' => 'AppointmentController@search'));
 
 Route::post('/appointments', array('as' => 'appointments', 'middleware' => 'auth', 'uses' => 'AppointmentController@index'));
@@ -19,12 +32,14 @@ Route::post('/savedoctor', array('as' => 'savedoctor', 'middleware' => 'auth', '
 Route::get('/viewdoctor', array('as' => 'viewdoctor', 'middleware' => 'auth', 'uses' => 'DoctorController@view'));
 Route::post('/deletedoctor', array('as' => 'deletedoctor', 'middleware' => 'auth', 'uses' => 'DoctorController@delete'));
 
+
 Route::get('/patients', array('as' => 'patients', 'uses' => 'PatientController@index'));
-Route::get('/newpatient', array('as' => 'newpatient', 'middleware' => 'auth', 'uses' => 'PatientController@new'));
-Route::post('/editpatient', array('as' => 'editpatient', 'middleware' => 'auth', 'uses' => 'PatientController@edit'));
+Route::get('/viewpatient/{id}', array('as' => 'viewpatient', 'uses' => 'PatientController@view'));
 Route::post('/savepatient', array('as' => 'savepatient', 'middleware' => 'auth', 'uses' => 'PatientController@save'));
-Route::get('/viewpatient', array('as' => 'viewpatient', 'middleware' => 'auth', 'uses' => 'PatientController@view'));
+
 Route::post('/deletepatient', array('as' => 'deletepatient', 'middleware' => 'auth', 'uses' => 'PatientController@delete'));
+
+
 
 
 Route::get('/settings/{id?}', array('as' => 'settings', 'middleware' => 'auth', 'uses' => 'SettingController@index'));
