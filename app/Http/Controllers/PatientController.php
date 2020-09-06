@@ -22,9 +22,9 @@ class PatientController extends Controller
     public function index()
     {
 
-        $result = Patient::orderBy('fullname', 'asc')->paginate(10000);
+        $result = Patient::orderBy('fullname', 'asc')->get();
 
-        $doctors = Doctor::orderBy('fullname', 'asc')->paginate(1000);
+        $doctors = Doctor::orderBy('fullname', 'asc')->get();
 
         return view('patient.list', array('results' => $result, 'doctors' => $doctors));
     }

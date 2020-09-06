@@ -21,12 +21,6 @@ class Doctor extends Model
         return $this->belongsTo('App\User', 'modifiedBy');
     }
 
-    public function room()
-    {
-
-        return $this->belongsTo('App\Room', 'roomid');
-    }
-
     public function specialty()
     {
 

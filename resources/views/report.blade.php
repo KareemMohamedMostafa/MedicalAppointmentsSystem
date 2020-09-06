@@ -8,39 +8,23 @@
 
     <div class="row">
 
-      <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="col-lg-5 col-md-6 col-sm-12">
 
         <h2>All Appointments <small class="text-muted">Listing</small> </h2>
 
       </div>
 
-      <div class="col-lg-5 col-md-6 col-sm-12">
+      <div class="col-lg-7 col-md-6 col-sm-12 text-right">
 
-        <a href="{{ url('appointments/0') }}"><button type="button" class="btn btn-default btn-round hidden-sm-down float-right m-l-10"> Beginning </button> </a>
+        <a href="{{ url('reports/0') }}"><button type="button" class="btn btn-default btn-round hidden-sm-down float-right m-l-10"> Beginning </button> </a>
 
-        <a href="{{ url('appointments/365') }}"><button type="button" class="btn btn-info btn-round hidden-sm-down float-right m-l-10"> 365 </i> </button> </a>
+        <a href="{{ url('reports/365') }}"><button type="button" class="btn btn-info btn-round hidden-sm-down float-right m-l-10"> 365 </i> </button> </a>
 
-        <a href="{{ url('appointments/30') }}"><button type="button" class="btn btn-info btn-round hidden-sm-down float-right m-l-10"> 30 </i> </button> </a>
+        <a href="{{ url('reports/30') }}"><button type="button" class="btn btn-success btn-round hidden-sm-down float-right m-l-10"> 30 </i> </button> </a>
 
-        <a href="{{ url('appointments/7') }}"><button type="button" class="btn btn-success btn-round hidden-sm-down float-right m-l-10"> 7 </i> </button> </a>
+        <a href="{{ url('reports/7') }}"><button type="button" class="btn btn-info btn-round hidden-sm-down float-right m-l-10"> 7 </i> </button> </a>
 
-        <a href="{{ url('appointments/1') }}"><button type="button" class="btn btn-info btn-round hidden-sm-down float-right m-l-10"> Today </button> </a>
-
-      </div>
-
-      <div class="col-lg-4 col-md-6 col-sm-12">
-
-        <button class="btn btn-primary btn-icon btn-round hidden-sm-down float-right m-l-10" type="button" data-toggle="modal" data-target="#formAppointmentModal" onclick="resetForm('appointmentForm')"> <i class="zmdi zmdi-plus"></i> </button>
-
-        <ul class="breadcrumb float-md-right">
-
-          <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="zmdi zmdi-home"></i> Home</a></li>
-
-          <li class="breadcrumb-item"><a href="javascript:void(0);">Appointments</a></li>
-
-          <li class="breadcrumb-item active">All</li>
-
-        </ul>
+        <a href="{{ url('reports/1') }}"><button type="button" class="btn btn-info btn-round hidden-sm-down float-right m-l-10"> Today </button> </a>
 
       </div>
 
@@ -62,7 +46,7 @@
 
             <div class="table-responsive">
 
-              <table class="table m-b-0 table-hover js-basic-example dataTable">
+              <table class="table table-bordered table-striped table-hover dataTable js-exportable">
 
                 <thead>
 
@@ -83,8 +67,6 @@
                     <th>Subject</th>
 
                     <th class="text-center">Status</th>
-
-                    <th class="text-center">Actions</th>
 
                   </tr>
 
@@ -111,12 +93,6 @@
                     <td>{{ $result->subject }}</td>
 
                     <td class="text-center"><span class="badge badge-success">{{ $result->status }}</span></td>
-
-                    <td class="text-center">
-
-                      <button type="button" class="btn btn-default btn-icon btn-simple btn-icon-mini btn-round" data-toggle="modal" data-target="#formAppointmentModal" onclick="formAppointmentModal('{{ $result->id }}')"><i class="zmdi zmdi-edit"></i></button>
-
-                    </td>
 
                   </tr>
 

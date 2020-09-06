@@ -54,7 +54,7 @@
 
               <h4 class="m-b-0">{{ $result->fullname }}</h4>
 
-              <p class="text-muted">{{ $result->room->name }} : {{ $result->specialty->name }}</p>
+              <p class="text-muted">{{ $result->specialty->name }}</p>
 
               <ul class="social-links list-inline m-t-20">
 

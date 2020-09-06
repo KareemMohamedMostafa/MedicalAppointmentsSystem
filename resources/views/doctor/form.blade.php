@@ -96,18 +96,6 @@
 
                                         <div class="col-md-6">
 
-                                            <label>Room</label>
-
-                                            <select class="form-control show-tick" id="roomid" name="roomid" required>
-
-                                                @if(count($rooms)>0)
-
-                                                @foreach($rooms as $room) <option value="{{ $room->id }}">{{ $room->name }}</option> @endforeach
-
-                                                @else <option value="">No data</option> @endif
-
-                                            </select>
-
                                             <label>Specialty</label>
 
                                             <select class="form-control show-tick" id="specialtyid" name="specialtyid" required>

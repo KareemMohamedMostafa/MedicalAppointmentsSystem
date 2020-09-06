@@ -14,8 +14,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 use App\Doctor;
 
-use App\Room;
-
 use App\Specialty;
 
 class DoctorController extends Controller
@@ -26,13 +24,11 @@ class DoctorController extends Controller
 
         $result = Doctor::orderBy('fullname', 'asc')->paginate(1000);
 
-        $rooms = Room::orderBy('name', 'asc')->paginate(1000);
-
         $specialtys = Specialty::orderBy('name', 'asc')->paginate(1000);
 
         $colors = array('card xl-blue', 'card xl-khaki', 'card xl-blue', 'card xl-parpl', 'card xl-pink', 'card xl-seagreen', 'card xl-blue', 'card xl-seagreen');
 
-        return view('doctor.list', array('results' => $result, 'rooms' => $rooms, 'specialtys' => $specialtys, 'colors' => $colors));
+        return view('doctor.list', array('results' => $result, 'specialtys' => $specialtys, 'colors' => $colors));
     }
 
     public function view(int $id)
@@ -52,7 +48,6 @@ class DoctorController extends Controller
             $data['image'] = url('/getImage/' . $doctor->image);
             $data['username'] = $doctor->user->name;
             $data['usermodifiedname'] = $doctor->usermodified->name;
-            $data['roomname'] = $doctor->room->name;
             $data['specialtyname'] = $doctor->specialty->name;
 
             return $data;
@@ -68,7 +63,6 @@ class DoctorController extends Controller
             'fullname' => 'required',
             'email' => 'required',
             'phone' => 'required',
-            'roomid' => 'required',
             'specialtyid' => 'required'
         ]);
 
@@ -77,7 +71,6 @@ class DoctorController extends Controller
         $user = \Auth::user();
         $doctor->createdBy = $user->id;
         $doctor->modifiedby = $user->id;
-        $doctor->roomid = $request->input('roomid');
         $doctor->specialtyid = $request->input('specialtyid');
         $doctor->fullname = $request->input('fullname');
         $doctor->gender = $request->input('gender');

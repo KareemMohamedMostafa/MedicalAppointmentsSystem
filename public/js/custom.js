@@ -130,8 +130,6 @@ function editDoctorModal(id) {
 
             $("#status").val(response.status).change();
 
-            $("#roomid").val(response.roomid).change();
-
             $("#specialtyid").val(response.specialtyid).change();
 
             $("#gender").val(response.gender).change();
@@ -255,6 +253,43 @@ function editUserModal(id) {
             $('input[name=editname]').val(response.name);
 
             $("#editrole").val(response.role).change();
+        }
+
+    });
+
+}
+
+
+function formAppointmentModal(id) {
+
+    const data = isNaN(id) ? parseInt(id) : id;
+
+    $.ajax({
+
+        type: "get",
+
+        url: 'http://localhost:8000/viewappointment/' + data,
+
+        success: function (response) {
+
+            resetForm('appointmentForm');
+
+            $('input[name=id]').val(response.id);
+
+            $('input[name=subject]').val(response.subject);
+
+            $('input[name=start]').val(response.formatedstart);
+
+            $('input[name=finish]').val(response.formatedfinish);
+
+            $("#roomid").val(response.roomid).change();
+
+            $("#doctorid").val(response.doctorid).change();
+
+            $("#patientid").val(response.patientid).change();
+
+            $("textarea[name='notes']").val(response.notes);
+
         }
 
     });

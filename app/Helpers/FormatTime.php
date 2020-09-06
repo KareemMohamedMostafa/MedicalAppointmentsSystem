@@ -5,6 +5,8 @@ namespace App\Helpers;
 class FormatTime
 {
 
+
+
   public static function phoneFormat($number)
   {
 
@@ -20,6 +22,11 @@ class FormatTime
     }
 
     return $number;
+  }
+
+  public static function MediumTimeFilter($date)
+  {
+    return date("Y-m-d H:i", strtotime($date));  
   }
 
   public static function LongTimeFilter($date)

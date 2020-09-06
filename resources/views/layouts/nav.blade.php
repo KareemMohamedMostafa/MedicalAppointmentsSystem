@@ -22,9 +22,13 @@
 
         <ul class="nav navbar-nav navbar-right">
 
-            <li><a href="{{ route('createVideo') }}">New Appointment</a></li>
+            <li><a href="{{ route('appointments') }}"><i class="zmdi zmdi-calendar"></i></a></li>
 
-            <li> <a href="javascript:void(0);" class="fullscreen hidden-sm-down" data-provide="fullscreen" data-close="true"><i class="zmdi zmdi-fullscreen"></i></a> </li>
+            <li><a href="{{ route('doctors') }}"><i class="zmdi zmdi-account-box-phone"></i></a></li>
+
+            <li><a href="{{ route('patients') }}"><i class="zmdi zmdi-account-o"></i></a></li>
+
+            <li><a href="{{ route('users') }}"><i class="zmdi zmdi-account-box-phone"></i></a></li>
 
             <li> <a href="{{ url('/logout') }}" class="mega-menu" data-close="true"><i class="zmdi zmdi-power"></i></a> </li>
 

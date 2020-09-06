@@ -25,10 +25,6 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $videos = Video::orderBy('id', 'desc')->paginate(5);
-
-        return view('dashboard', array(
-            'videos' => $videos
-        ));
+        return view('dashboard');
     }
 }
