@@ -16,7 +16,11 @@
 
       <div class="col-lg-5 col-md-6 col-sm-12">
 
+        @if (Auth::user()->role != 'visitor')
+
         <button class="btn btn-primary btn-icon btn-round hidden-sm-down float-right m-l-10" type="button" data-toggle="modal" data-target="#formRoomModal" onclick="resetForm('roomForm')"> <i class="zmdi zmdi-plus"></i> </button>
+
+        @endif
 
         <ul class="breadcrumb float-md-right">
 
@@ -62,7 +66,11 @@
 
                     <th class="text-center">Status</th>
 
+                    @if (Auth::user()->role == 'admin')
+
                     <th class="text-center">Actions</th>
+
+                    @endif
 
                   </tr>
 
@@ -82,11 +90,11 @@
 
                     <td class="text-center"><span class="badge badge-success">{{ $result->status }}</span></td>
 
-                    <td class="text-center">
+                    @if (Auth::user()->role == 'admin')
 
-                      <button type="button" class="btn btn-default btn-icon btn-simple btn-icon-mini btn-round" data-toggle="modal" data-target="#formRoomModal" onclick="editRoomModal('{{ $result->id }}')"><i class="zmdi zmdi-edit"></i></button>
+                    <td class="text-center"> <button type="button" class="btn btn-default btn-icon btn-simple btn-icon-mini btn-round" data-toggle="modal" data-target="#formRoomModal" onclick="editRoomModal('{{ $result->id }}')"><i class="zmdi zmdi-edit"></i></button> </td>
 
-                    </td>
+                    @endif
 
                   </tr>
 

@@ -46,6 +46,8 @@
 
             <div class="table-responsive">
 
+              @if (Auth::user()->role == 'admin')
+
               <table class="table table-bordered table-striped table-hover dataTable js-exportable">
 
                 <thead>
@@ -101,6 +103,66 @@
                 </tbody>
 
               </table>
+
+              @else
+
+              <table class="table m-b-0 table-hover js-basic-example dataTable">
+
+                <thead>
+
+                  <tr>
+
+                    <th>ID</th>
+
+                    <th>Room</th>
+
+                    <th>Doctor</th>
+
+                    <th class="text-center">Start Time</th>
+
+                    <th class="text-center">Finish Time</th>
+
+                    <th>Patient</th>
+
+                    <th>Subject</th>
+
+                    <th class="text-center">Status</th>
+
+                  </tr>
+
+                </thead>
+
+                <tbody>
+
+                  @foreach($results as $result)
+
+                  <tr>
+
+                    <td>{{ $result->id }}</td>
+
+                    <td>{{ $result->room->name }}</td>
+
+                    <td><span class="list-icon"><img class="patients-img" src="{{ url('/getImage/' . $result->doctor->image) }}" /></span> {{ $result->doctor->fullname }}</td>
+
+                    <td class="text-center">{{ \FormatTime::MediumTimeFilter($result->start) }}</td>
+
+                    <td class="text-center">{{ \FormatTime::MediumTimeFilter($result->finish) }}</td>
+
+                    <td><span class="list-icon"><img class="patients-img" src="{{ url('/getImage/' . $result->patient->image) }}" /></span> {{ $result->patient->fullname }}</td>
+
+                    <td>{{ $result->subject }}</td>
+
+                    <td class="text-center"><span class="badge badge-success">{{ $result->status }}</span></td>
+
+                  </tr>
+
+                  @endforeach
+
+                </tbody>
+
+              </table>
+
+              @endif
 
             </div>
 

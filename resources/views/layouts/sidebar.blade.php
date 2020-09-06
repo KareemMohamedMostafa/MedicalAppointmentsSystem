@@ -10,7 +10,7 @@
 
           <div class="image">
 
-            <a href="{{ route('viewuser') }}"><img src="{{ url('/miniatura/' . Auth::user()->image) }}" /></a>
+            <img src="{{ url('/getImage/' . Auth::user()->image) }}" />
 
           </div>
 
@@ -28,7 +28,7 @@
 
       <li class="header">MAIN</li>
 
-      <li class="active open"><a href="{{ url('/') }}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>
+      <li> <a href="{{ url('/') }}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>
 
       <li> <a href="{{ url('appointments/7') }}"><i class="zmdi zmdi-copy"></i><span>Book Appointments</span></a> </li>
 

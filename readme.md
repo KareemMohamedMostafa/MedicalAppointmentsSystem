@@ -61,3 +61,7 @@ Config
 
 Admin
  * Users
+  *** Role
+    Admin -> can do everything
+    User -> can create
+    visitor -> can see

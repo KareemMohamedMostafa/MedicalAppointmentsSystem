@@ -16,8 +16,11 @@
 
       <div class="col-lg-5 col-md-6 col-sm-12">
 
-        <button class="btn btn-primary btn-icon btn-round hidden-sm-down float-right m-l-10" type="button" data-toggle="modal" data-target="#formCompanyModal" onclick="resetForm('companyForm')"> <i class="zmdi zmdi-plus"></i> </button>
+        @if (Auth::user()->role != 'visitor')
 
+        <button class="btn btn-primary btn-icon btn-round hidden-sm-down float-right m-l-10" type="button" data-toggle="modal" data-target="#formCompanyModal" onclick="resetForm('companyForm')"> <i class="zmdi zmdi-plus"></i> </button>
+  
+        @endif
         <ul class="breadcrumb float-md-right">
 
           <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="zmdi zmdi-home"></i> Home</a></li>
@@ -76,8 +79,12 @@
 
               <p class="text-muted">{{ $result->address }}</p>
 
+              @if (Auth::user()->role == 'admin')
+
               <button type="button" data-toggle="modal" data-target="#formCompanyModal" onclick="editCompanyModal('{{ $result->id }}')" class="btn btn-default btn-round btn-simple"><i class="zmdi zmdi-edit"></i> Edit</button>
 
+              @endif
+              
             </div>
 
           </div>

@@ -47,6 +47,7 @@
                       <label>Role</label>
 
                       <select class="form-control show-tick" id="role" name="role" required>
+
                         @if (Auth::user()->role == 'admin')
 
                         @if(count($roles)>0)
@@ -56,6 +57,7 @@
                         @else <option value="visitor">Visitor</option> @endif
 
                         @endif
+
                       </select>
 
                       <label>Image</label>
